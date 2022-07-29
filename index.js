@@ -15,6 +15,7 @@ var div = document.querySelector(".div");
 var button = document.querySelector(".button");
 console.log(div);
 console.log(button);
+var losowyCytat = 0;
 var cytaty1 = ['I am convinced that God does not play dice',
    "I don't know what weapons will be used in the Third World War, but I think the Fourth will be for sticks and stones.",
    'Imagination is more important than knowledge. Knowledge is limited, while imagination surrounds the whole world.',
@@ -30,20 +31,24 @@ language.addEventListener('click', function () {
         h1.innerHTML = h1Text;
         h2.innerHTML = h2Text;
         language.innerHTML = "jezyk";
+        div.innerHTML =  cytaty1[losowyCytat];
         islanguage = !islanguage;
     } else {
         h1.innerHTML = h1TextPL;
         h2.innerHTML = h2TextPL;
         language.innerHTML = "language";
+        div.innerHTML =  cytaty[losowyCytat];
         islanguage = !islanguage;
     }
 })
 button.addEventListener('click', function () {
-    button.classList.add('shake-animation')
-     if(islanguage){
-         div.innerHTML =  cytaty[Math.floor((Math.random() * 7))];
-     }else{
-         div.innerHTML =  cytaty1[Math.floor((Math.random() * 7))];
-     }
-     setTimeout(function(){button.classList.remove('shake-animation')}, 1000);
- })
+   button.classList.add('shake-animation')
+    if(islanguage){
+        losowyCytat =Math.floor((Math.random() * 7));
+        div.innerHTML =  cytaty[losowyCytat];
+    }else{
+        losowyCytat =Math.floor((Math.random() * 7));
+        div.innerHTML =  cytaty1[losowyCytat];
+    }
+    setTimeout(function(){button.classList.remove('shake-animation')}, 1000);
+})
